@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
+import { Report } from 'notiflix/build/notiflix-report-aio';
+
 
 import { nanoid } from 'nanoid';
 import { AddBtn, Form, Input, FormName, } from './ContactForm.styled';
@@ -35,10 +37,10 @@ export const ContactForm = () => {
     };
 
     if (contactUser.find(item => item.name.toLowerCase() === user.name.toLowerCase())) {
-      alert(`'${user.name}' is already in contacts.`);
+      Report.failure(`'${user.name}' is already in contacts.`);
       return;
     } else if (contactUser.find(item => item.number === user.number)) {
-      alert(`'${user.number}' is already in contacts.`);
+      Report.failure(`'${user.number}' is already in contacts.`);
       return;
     }
 
